@@ -9,4 +9,7 @@ class User < ApplicationRecord
   #dependent: :destroyを設定したモデル（のインスタンス）：post_images
   #となるので、Userが消えるとpost_image(s)が消えることになる。
   #次はPostImageモデルにUserモデルを関連付ける
+  
+  has_many :post_comments, dependent: :destroy
+  #next  PostImageモデルとPostCommentモデルを関連付ける
 end
