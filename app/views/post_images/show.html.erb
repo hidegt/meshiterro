@@ -39,6 +39,19 @@
                 <i class="fa fa-comment"></i>
                 <a href="#comments"><%= @post_image.post_comments.count %></a>
               </li>
+              <li>
+                <!--@post_image.userでは、投稿（@post_image）に紐づいているユーザ（.user）を取得。-->
+                <!--current_userは、devise側が用意しているヘルパーで、ログイン中のユーザを取得。-->
+                <!--この2つを == で比較し、一致していれば削除ボタンが表示-->
+                <% if @post_image.user == current_user %>
+                  <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+                <% end %>
+              </li>
+              <!--削除ボタンだけだと、他の人の投稿も削除できる。削除対象を自分だけの投稿にする-->
+              <!--考え方-->
+              <!--もし、投稿者 == 現在ログインしているユーザ だったら-->
+              <!--    削除ボタン-->
+              <!--終わり-->
             </ul>
             <div class="post-content-inner mt-20">
               <p><%= @post_image.caption %></p>

@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   #新規投稿　new,create
   #一覧　index
   #詳細　show
-  resources :post_images, only: [:new, :create, :index, :show] do
+  #投稿削除　destroy
+  resources :post_images, only: [:new, :create, :index, :show, :destroy] do
   #画像投稿機能のルート
     resource :favorites, only: [:create, :destroy]
     #いいね機能のルート
@@ -26,5 +27,7 @@ Rails.application.routes.draw do
     
     #コメントは、投稿画像に対してコメント。このため、post_commentsは、post_imagesに結びつきます。
     #上記のような親子関係
-  
+
+  resources :users, only: [:show]
+  #マイページのルーティング定義
 end
