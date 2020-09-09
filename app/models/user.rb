@@ -15,4 +15,5 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   #Favoriteモデルのカラム（user_idとpost_image_id）は、UserモデルのidやPostImageモデルのidと関連付けが必要
   #次はPostImageモデル
+  attachment :profile_image
 end

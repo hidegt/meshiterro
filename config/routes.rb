@@ -28,6 +28,6 @@ Rails.application.routes.draw do
     #コメントは、投稿画像に対してコメント。このため、post_commentsは、post_imagesに結びつきます。
     #上記のような親子関係
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
   #マイページのルーティング定義
 end

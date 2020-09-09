@@ -1,6 +1,16 @@
 <div class="profile-container">
   <h3 class="profile-name"><%= @user.name %></h3>
-  <%= image_tag('sample-author1.jpg', class: "img-circle pull-left profile-thumb", style: "width: 100px; height: 100px; margin-top: 20px;") %>
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+  <!--attachment_image_tag 保存先インスタンス名, :保存先カラム名, :サイズ（横幅,高さ）, 画像拡張子, 代替画像-->
+  <!--post_image : 画像の保存先カラムのあるインスタンス名を指定-->
+  <!--:profile_image : 画像の保存先のカラム名を指定-->
+  <!--:fill : 画像の縦横サイズを指定。単位はpx-->
+  <!--format: : 画像の拡張子を指定します。-->
+  <!--class: : HTMLのclassタグを、Railsのタグ用に記述しています。-->
+  <!--fallback: : 画像データがカラムにない場合、代わりに表示する画像を指定-->
+  <% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "pull-right" %></p>
+  <% end %>
 </div>
 
 <section class="sct-color-1 slice">
